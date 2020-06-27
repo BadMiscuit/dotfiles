@@ -41,6 +41,7 @@ format-offset =
 background = #2e3440
 foreground = #eceff4
 transparent = #33000000
+clear = #00000000
 blue = #5e81ac
 green = #a3be8c
 alert = #d08770
@@ -117,10 +118,10 @@ module-margin-right = 1
 
 ;https://github.com/jaagr/polybar/wiki/Fonts
 ;font-0 = "DroidSansMono Nerd Font Mono:style=Book:pixelsize=11;3"
-font-0 = "iosevka:style=light:pixelsize=11;3"
+font-0 = "iosevka:style=Regular:pixelsize=11;3"
 font-1 = "FontAwesome:size=13;3"
-font-2 = "Noto Sans:size=10;3"
-font-3 = "Noto Sans Mono:size=10;3"
+font-2 = "iosevka:style=Bold:pixelsize=13;2"
+font-3 = "Noto Sans Mono:size=15;3"
 
 modules-left = i3
 modules-center = date
@@ -183,11 +184,12 @@ override-redirect = false
 bottom = false
 fixed-center = true
 width = 100%
-height = 30
+height = 25
 ;offset-x = 1%
 ;offset-y = 1%
 
-background = ${colors.transparent}
+;background = ${colors.transparent}
+background = ${colors.clear}
 foreground = ${colors.foreground}
 
 ; Background gradient (vertical steps)
@@ -206,20 +208,21 @@ border-size = 0
 border-color = #000000
 
 padding-left = 1
-padding-right = 1
+padding-right = 2
 
 module-margin-left = 1
 module-margin-right = 0
 
 ;https://github.com/jaagr/polybar/wiki/Fonts
-font-0 = "iosevka:style=light:pixelsize=12;5"
-font-1 = "FontAwesome:size=12;5"
+font-0 = "iosevka:style=light:pixelsize=12;7"
+font-1 = "FontAwesome:size=13;7"
 font-2 = "Noto Sans:size=10;0"
 font-3 = "Noto Sans Mono:size=10;0"
 
-modules-left =  
+;modules-left = spotify spotify-prev spotify-play-pause spotify-next 
+moduels-left = mpd 
 modules-center = xwindow
-modules-right = spotify-prev spotify-play-pause spotify-next spotify 
+modules-right = cpu2 powermenu
 
 
 ;dim-value = 1.0
@@ -347,7 +350,7 @@ label-focused = %name%
 label-focused-background = #5E81AC
 label-focused-foreground = ${colors.background}
 label-focused-underline = #6790eb
-label-focused-padding = 3
+label-focused-padding = 2
 
 ; Available tokens:
 ;   %name%
@@ -356,7 +359,7 @@ label-focused-padding = 3
 ; Default: %icon%  %name%
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %name%
-label-unfocused-padding = 4
+label-unfocused-padding = 2
 label-unfocused-background = ${colors.background}
 label-unfocused-foreground = ${colors.foreground}
 label-unfocused-underline =
@@ -445,11 +448,11 @@ format-background = ${colors.background}
 label = %percentage%
 
 ; Only applies if <ramp> is used
-ramp-0 = 🌕
-ramp-1 = 🌔
-ramp-2 = 🌓
-ramp-3 = 🌒
-ramp-4 = 🌑
+ramp-0 = ☼
+ramp-1 = ☼
+ramp-2 = ☼
+ramp-3 = ☼
+ramp-4 = ☼
 
 ; Only applies if <bar> is used
 bar-width = 10
@@ -563,12 +566,12 @@ type = internal/cpu
 ; Default: 1
 interval = 1
 format-foreground = ${colors.foreground}
-format-background = ${colors.background}
+format-background = ${colors.clear}
 format-prefix = "  "
 format-prefix-foreground = #cd1f3f
 format-underline = #cd1f3f
 
-label-font = 3
+label-font = 0
 
 ; Available tags:
 ;   <label> (default)
@@ -577,13 +580,13 @@ label-font = 3
 ;   <ramp-coreload>
 format = <label>
 
-format-padding = 2
+format-padding = 1
 
 ; Available tokens:
 ;   %percentage% (default) - total cpu load
 ;   %percentage-cores% - load percentage for each core
 ;   %percentage-core[1-9]% - load percentage for specific core
-label = Cpu %percentage:3%%
+label = Cpu%percentage:3%% |
 
 ################################################################################
 
@@ -938,6 +941,37 @@ format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 
 
+################################################################################
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.foreground}
+label-open-background = ${colors.clear}
+
+label-close =  Annuler
+label-close-foreground = ${colors.foreground}
+label-close-background = ${colors.clear}
+
+label-separator = |
+label-separator-foreground = ${colors.foreground}
+label-separator-background = ${colors.clear}
+
+menu-0-0 =  Redémarrer
+menu-0-0-exec = systemctl reboot
+menu-0-0-foreground = ${colors.foreground}
+menu-0-0-background = ${colors.clear}
+
+menu-0-1 =  Eteindre
+menu-0-1-exec = systemctl poweroff
+menu-0-1-foreground = ${colors.foreground}
+menu-0-1-background = ${colors.clear}
+
 
 ################################################################################
 
@@ -986,7 +1020,7 @@ format-prefix = "  "
 format = <label>
 exec = ~/.config/polybar/scripts/scroll_spotify_status.sh
 format-foreground = ${colors.foreground}
-format-background = ${colors.transparent}
+format-background = ${colors.clear}
 label-minlen = 20
 label-maxlen = 20
 
@@ -996,7 +1030,7 @@ exec = echo ""
 format = <label>
 click-left = playerctl previous spotify
 format-foreground = ${colors.foreground}
-format-background = ${colors.transparent}
+format-background = ${colors.clear}
 
 [module/spotify-play-pause]
 type = custom/ipc
@@ -1005,7 +1039,7 @@ hook-1 = echo ""
 initial = 1
 click-left = playerctl play-pause spotify
 format-foreground = ${colors.foreground}
-format-background = ${colors.transparent}
+format-background = ${colors.clear}
 
 [module/spotify-next]
 type = custom/script
@@ -1013,7 +1047,7 @@ exec = echo ""
 format = <label>
 click-left = playerctl next spotify
 format-foreground = ${colors.foreground}
-format-background = ${colors.transparent}
+format-background = ${colors.clear}
 
 ################################################################################
 
@@ -1264,19 +1298,14 @@ format-background = ${colors.background}
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground}
 format-prefix-background = ${colors.background}
-format-prefix-underline = #3ecfb2
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 
 label-layout = %layout%
-label-layout-underline = #3ecfb2
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.background}
-label-indicator-underline = ${colors.foreground}
+label-layout-font = 3
 
 ################################################################################
 
@@ -1291,7 +1320,7 @@ label = %title%
 label-maxlen = 50
 
 format-foreground = ${colors.foreground}
-format-background = ${colors.transparent}
+format-background = ${colors.clear}
 
 ###############################################################################
 
