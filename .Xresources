@@ -1,13 +1,9 @@
 !! Colorscheme
-!
-!urxvt*transparent: true
-!urxvt*shading: 50
-!urxvt*blurRadius: 50
- 
+! 
 ! special
-*.foreground:   #ffffff
-*.background:   #000000
-*.cursorColor:  #ffffff
+*.foreground:   #d3d0c8
+*.background:   #2d2d2d
+*.cursorColor:  #d3d0c8
 
 ! black
 *.color0: #002831
@@ -44,6 +40,7 @@
 *.colorBD: #b5d5d3
 
 !! URxvt Appearance
+
 URxvt.font:xft:Monospace:pixelsize=15
 URxvt.boldFont: xft:Monospace-Bold=pixelsize=15
 URxvt.italicFont: xft:Monospace-Italic=pixelsize=15
@@ -62,4 +59,6 @@ URxvt.scrollBar_right: false
 !URxvt*depth: 32
 !URxvt.inheritPixmap: true
 !URxvt.iso14755: false
-
+!urxvt*transparent: true
+!urxvt*shading: 50
+!urxvt*blurRadius: 50
