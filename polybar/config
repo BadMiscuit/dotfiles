@@ -37,18 +37,35 @@ format-margin =
 format-offset =
 
 [colors]
-; Nord theme ============
-background = #2e3440
-foreground = #eceff4
+; Custom Nord theme ============
+background = #2d2d2d
+foreground = #d3d0c8
 transparent = #33000000
 clear = #00000000
-blue = #5e81ac
-green = #a3be8c
-red = #bf616a
-alert = #d08770
+blue = #2176c7
+green = #6cbe6c
+red = #d11c24
+white = #eceff4
+alert = #f5163b
 volume-min = #a3be8c
 volume-med = #ebcb8b
 volume-max = #bf616a
+; =======================
+
+
+
+; Nord theme ============
+; background = #2e3440
+; foreground = #eceff4
+; transparent = #33000000
+; clear = #00000000
+; blue = #5e81ac
+; green = #a3be8c
+; red = #bf616a
+; alert = #d08770
+; volume-min = #a3be8c
+; volume-med = #ebcb8b
+; volume-max = #bf616a
 ; =======================
 
 ; Gotham theme ==========
@@ -119,9 +136,9 @@ module-margin-right = 1
 
 ;https://github.com/jaagr/polybar/wiki/Fonts
 ;font-0 = "DroidSansMono Nerd Font Mono:style=Book:pixelsize=11;3"
-font-0 = "iosevka:style=Regular:pixelsize=11;3"
+font-0 = "Iosevka Custom:style=Regular:pixelsize=11;3"
 font-1 = "FontAwesome:size=13;3"
-font-2 = "iosevka:style=Bold:pixelsize=13;2"
+font-2 = "Iosevka Custom:style=Bold:pixelsize=13;2"
 font-3 = "Noto Sans Mono:size=15;3"
 
 modules-left = i3
@@ -215,7 +232,7 @@ module-margin-left = 1
 module-margin-right = 0
 
 ;https://github.com/jaagr/polybar/wiki/Fonts
-font-0 = "iosevka:style=Bold:pixelsize=12;7"
+font-0 = "Iosevka Custom:style=Regular:pixelsize=13;7"
 font-1 = "FontAwesome:size=13;7"
 font-2 = "Noto Sans:size=10;0"
 font-3 = "Noto Sans Mono:size=10;0"
@@ -349,7 +366,7 @@ label-mode-background = #FFBB00
 ; focused = Active workspace on focused monitor
 label-focused = %name%
 label-focused-background = #5E81AC
-label-focused-foreground = ${colors.background}
+label-focused-foreground = ${colors.white}
 label-focused-underline = #6790eb
 label-focused-padding = 2
 
@@ -1323,7 +1340,7 @@ type = internal/xwindow
 label = %title%
 label-maxlen = 50
 
-format-foreground = ${colors.foreground}
+format-foreground = ${colors.white}
 format-background = ${colors.clear}
 
 ###############################################################################
