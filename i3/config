@@ -5,6 +5,7 @@ set $win              Mod4
 set $term             urxvt
 set $browser          firefox
 set $menu             rofi -show run
+set $wallpaper        /usr/share/wallpapers/MistyForest/misty_forest-11.jpg
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -206,7 +207,11 @@ exec --no-startup-id compton
 exec diodon
 
 # Background configuration
-exec --no-startup-id feh --bg-fill /usr/share/wallpapers/LazyNin.15520.jpg
+exec --no-startup-id feh --bg-fill $wallpaper
 
 # Switch keyboard layout
 exec --no-startup-id "setxkbmap -layout us,fr -option 'grp:win_space_toggle'"
+
+# Screenshot
+bindsym Print exec scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'
+bindsym Control+Print exec gnome-screenshot -i

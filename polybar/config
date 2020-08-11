@@ -136,9 +136,9 @@ module-margin-right = 1
 
 ;https://github.com/jaagr/polybar/wiki/Fonts
 ;font-0 = "DroidSansMono Nerd Font Mono:style=Book:pixelsize=11;3"
-font-0 = "Iosevka Custom:style=Regular:pixelsize=11;3"
-font-1 = "FontAwesome:size=13;3"
-font-2 = "Iosevka Custom:style=Bold:pixelsize=13;2"
+font-0 = "DejaVuSansMono:style=Regular:pixelsize=11;3"
+font-1 = "FontAwesome:size=13;4"
+font-2 = "DejaVuSansMono:style=Bold:pixelsize=11;3"
 font-3 = "Noto Sans Mono:size=15;3"
 
 modules-left = i3
@@ -214,6 +214,8 @@ foreground = ${colors.foreground}
 ;   background-[0-9]+ = #aarrggbb
 ;background-0 =
 
+separator = |
+
 ;radius = 0.0
 ;line-size = 4
 ;line-color = #000000
@@ -229,18 +231,18 @@ padding-left = 1
 padding-right = 2
 
 module-margin-left = 1
-module-margin-right = 0
+module-margin-right = 1
 
 ;https://github.com/jaagr/polybar/wiki/Fonts
-font-0 = "Iosevka Custom:style=Regular:pixelsize=13;7"
-font-1 = "FontAwesome:size=13;7"
-font-2 = "Noto Sans:size=10;0"
+font-0 = "DejaVuSansMono:style=Regular:size=12;5"
+font-1 = "FontAwesome:size=13;5"
+font-2 = "DejaVuSansMono:size=10;0"
 font-3 = "Noto Sans Mono:size=10;0"
 
 ;modules-left = spotify spotify-prev spotify-play-pause spotify-next 
-moduels-left = mpd 
+;modules-left = mpd 
 modules-center = xwindow
-modules-right = cpu2 sysmenu
+modules-right = temperature2 cpu2 sysmenu
 
 
 ;dim-value = 1.0
@@ -457,7 +459,7 @@ card = intel_backlight
 ;   <label> (default)
 ;   <ramp>
 ;   <bar>
-format = <ramp> <label>
+format = <label>
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 
@@ -466,11 +468,11 @@ format-background = ${colors.background}
 label = %percentage%
 
 ; Only applies if <ramp> is used
-ramp-0 = ☼
-ramp-1 = ☼
-ramp-2 = ☼
-ramp-3 = ☼
-ramp-4 = ☼
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
 
 ; Only applies if <bar> is used
 bar-width = 10
@@ -535,8 +537,8 @@ format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 ;   
 format-prefix = " "
-format-prefix-foreground = #cd1f3f
-format-underline = #cd1f3f
+format-prefix-foreground = ${colors.foreground}
+format-underline = ${colors.foreground}
 
 ; Available tags:
 ;   <label> (default)
@@ -588,9 +590,10 @@ type = internal/cpu
 interval = 1
 format-foreground = ${colors.foreground}
 format-background = ${colors.clear}
-format-prefix = "  "
-format-prefix-foreground = #cd1f3f
-format-underline = #cd1f3f
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+format-underline = ${colors.foreground}
+
 
 label-font = 0
 
@@ -601,13 +604,13 @@ label-font = 0
 ;   <ramp-coreload>
 format = <label>
 
-format-padding = 1
+format-padding = 0
 
 ; Available tokens:
 ;   %percentage% (default) - total cpu load
 ;   %percentage-cores% - load percentage for each core
 ;   %percentage-core[1-9]% - load percentage for specific core
-label = Cpu%percentage:3%% |
+label = CPU%percentage:3%%
 
 ################################################################################
 
@@ -1129,12 +1132,12 @@ ramp-foreground =${colors.foreground}
 type = custom/script
 exec = ~/.config/polybar/scripts/tempcores.sh
 interval = 2
-format-padding = 1
+format-padding = 0
 format-foreground = ${colors.foreground}
-format-background = ${colors.background}
+format-background = ${colors.clear}
 format-underline = #C1B93E
 format-prefix-foreground = #C1B93E
-label =  %output:0:150:%
+label = %output:0:150:%
 
 ################################################################################
 
@@ -1363,6 +1366,7 @@ format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 label-disconnected = %ifname% disconnected
 label-disconnected-foreground = ${colors.foreground}
+label-disconnected-background = ${colors.background}
 
 ramp-signal-0 = Q
 ramp-signal-1 = W
